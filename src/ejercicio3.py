@@ -30,26 +30,49 @@
  #   print("La edad ingresada no es válida.")
 
 # Ejercicio 2 
+#print("¡Bienvenido al servicio de envíos de paquetería internacional!")
+#zona = int(input("1. Norteamérica\n2. Centroamérica\n3. Suramérica\n4. Europa\n5. Asia\n  **Seleccione la zona a la que enviará el paquete:** "))
+
+#if zona > 0 and zona <= 5:
+ #   peso = float(input("Ingrese el peso del paquete (gramos): "))
+  #  if peso <= 5000 and peso > 0:
+   #         if zona == 1:
+    #            PR = 11 * peso
+     #       elif zona == 2:
+      #          PR = 10 * peso
+       #     elif zona == 3:
+        #        PR = 12 * peso
+         #   elif zona == 4:
+          #      PR = 24 * peso
+           # elif zona == 5:
+            #    PR = 27*peso
+           # print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
+    #else:
+     #   print("No se da el servicio a paquetes con un peso superior a 5000 gramos")
+#else:
+ #   print("La zona ingresada no existe")
+        
+# Ejercicio 2 utilizando 'match'
 print("¡Bienvenido al servicio de envíos de paquetería internacional!")
 zona = int(input("1. Norteamérica\n2. Centroamérica\n3. Suramérica\n4. Europa\n5. Asia\n  **Seleccione la zona a la que enviará el paquete:** "))
-
-if zona > 0 and zona <= 5:
+if zona > 0 
     peso = float(input("Ingrese el peso del paquete (gramos): "))
     if peso <= 5000 and peso > 0:
-            if zona == 1:
-                PR = 11 * peso
-            elif zona == 2:
-                PR = 10 * peso
-            elif zona == 3:
-                PR = 12 * peso
-            elif zona == 4:
-                PR = 24 * peso
-            elif zona == 5:
+        match zona
+            case 1:
+                PR =11*peso
+            case 2:
+                PR = 10*peso
+            case 3:
+                PR = 12*peso
+            case 4:
+                PR = 24*peso
+            case 5:
                 PR = 27*peso
+            case _:
+                print(f"La zona ingresada no existe")
             print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
     else:
         print("No se da el servicio a paquetes con un peso superior a 5000 gramos")
 else:
-    print("La zona ingresada no existe")
-        
-
+    print("El número ingresado no es válido")
