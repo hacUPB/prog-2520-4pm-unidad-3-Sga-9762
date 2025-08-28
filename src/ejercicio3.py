@@ -55,24 +55,33 @@
 # Ejercicio 2 utilizando 'match'
 print("¡Bienvenido al servicio de envíos de paquetería internacional!")
 zona = int(input("1. Norteamérica\n2. Centroamérica\n3. Suramérica\n4. Europa\n5. Asia\n  **Seleccione la zona a la que enviará el paquete:** "))
-if zona > 0 
-    peso = float(input("Ingrese el peso del paquete (gramos): "))
-    if peso <= 5000 and peso > 0:
-        match zona:
-            case 1:
-                PR =11*peso
-            case 2:
-                PR = 10*peso
-            case 3:
-                PR = 12*peso
-            case 4:
-                PR = 24*peso
-            case 5:
-                PR = 27*peso
-            case _:
-                print(f"La zona ingresada no existe")
+
+match zona:
+    case 1:
+        peso = float(input("Ingrese el peso del paquete (gramos): "))
+        if peso <= 5000 and peso > 0:
+            PR = 11*peso
             print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
-    else:
-        print("No se da el servicio a paquetes con un peso superior a 5000 gramos")
-else:
-    print("El número ingresado no es válido")
+    case 2:
+        peso = float(input("Ingrese el peso del paquete (gramos): "))
+        if peso <= 5000 and peso > 0:
+            PR = 10*peso
+            print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
+    case 3:
+        peso = float(input("Ingrese el peso del paquete (gramos): "))
+        if peso <= 5000 and peso > 0:
+            PR = 12*peso
+            print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
+    case 4:
+        peso = float(input("Ingrese el peso del paquete (gramos): "))
+        if peso <= 5000 and peso > 0:
+            PR = 24*peso
+            print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
+    case 5:
+        peso = float(input("Ingrese el peso del paquete (gramos): "))
+        if peso <= 5000 and peso > 0:
+            PR = 27*peso
+            print(f"El costo total de su envío es ${PR}. **¡Gracias por utilizar nuestros servicios!**")
+    case _:
+        print("El número ingresado no es válido")
+
