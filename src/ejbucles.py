@@ -73,4 +73,4 @@ while control == True:
             control = False
         case _:
             print("**Opción Inválida**")
-            control = False
+            print()
