@@ -58,7 +58,7 @@ zona = int(input("1. Norteamérica\n2. Centroamérica\n3. Suramérica\n4. Europa
 if zona > 0 
     peso = float(input("Ingrese el peso del paquete (gramos): "))
     if peso <= 5000 and peso > 0:
-        match zona
+        match zona:
             case 1:
                 PR =11*peso
             case 2:
