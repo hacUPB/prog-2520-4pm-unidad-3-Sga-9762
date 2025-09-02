@@ -47,7 +47,7 @@ while i <= 15:
     print(f"{numero} x {i} = {ct}")
     i += 1
 '''
-
+'''
 # Menú 2
 
 control = True
@@ -74,3 +74,55 @@ while control == True:
         case _:
             print("**Opción Inválida**")
             print()
+'''
+
+'''
+numero = int(input("Ingrese un número para la sucesión: "))
+
+
+if numero == 1:
+    print(0)
+elif numero >= 1:
+    a = 0
+    b = 1
+    m = 1
+    print("**Inicializando**")
+    print(a,b)
+
+    while m <= (numero - 2):
+        c = a +b
+        print(c)
+        a = b
+        b = c
+        m = m + 1
+    print("**Sucesión terminada. No se imprimen más términos**")
+elif numero <= 0:
+    print("No se imprimen terminos")
+'''
+
+'''
+numero = int(input("Ingrese un número: "))
+i = 0
+while i <= 10:
+    pr = numero*i
+    print(f"{numero} x {i} = {pr}")
+    i = i + 1
+'''
+# Bucle 'for':
+'''
+numero = int(input("Ingrese un número positivo: "))
+for numero in range(numero+1):
+    if numero%2 == 0:
+        print(f"**Número par encontrado: {numero}**")
+        b = numero 
+        c = numero + b 
+print(f"La suma de los números pares desde 0 hasta {numero} es {c}")
+'''
+
+numero = int(input("Ingrese un número positivo: "))
+i = 0 
+j = 0
+for i in range(1, numero+1):
+    for j in range(1, i + 1):
+        print(j,end=' ')
+    print()
