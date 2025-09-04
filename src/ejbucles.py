@@ -118,7 +118,7 @@ for numero in range(numero+1):
         c = numero + b 
 print(f"La suma de los números pares desde 0 hasta {numero} es {c}")
 '''
-
+'''
 numero = int(input("Ingrese un número positivo: "))
 i = 0 
 j = 0
@@ -126,3 +126,42 @@ for i in range(1, numero+1):
     for j in range(1, i + 1):
         print(j,end=' ')
     print()
+'''
+'''
+# Adivinar número
+#import random
+from random import randint
+# Si se importa un módulo, y deseo usar funciones de ese módulo, debo llamar primero al módulo seguido de la función (ej: random.funcion)
+num_ran = randint(1, 100)
+numero = -1
+i = 0
+
+while numero != num_ran:
+    i = i + 1
+    numero = int(input("Adivina el número generado (entre 0 y 100):) -> "))
+    if numero > num_ran:
+        print("El número generado es menor")
+    elif numero < num_ran:
+        print("El número generado es mayor")
+    else:
+        print(f"El número ingresado es **correcto!**. Intentos totales: {i}")
+'''
+
+# Verificador de # primo
+
+num = int(input("Ingrese un número entero mayor que 1: "))
+divisor = num // 2 
+cont = 0
+for i in range(2, divisor + 1 ):
+    if num % i == 0:
+        cont += 1 
+
+if cont == 0:
+    print(f"{num} es primo")
+else:
+    print(f"{num} no es primo")
+    for i in range(1, num+1):
+        if num % i == 0:
+            print(i)
+
+
