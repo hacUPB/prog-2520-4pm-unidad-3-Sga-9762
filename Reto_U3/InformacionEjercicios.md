@@ -46,7 +46,8 @@ Tu objetivo es desarrollar un programa que simule el ascenso de un avión desde 
 
 ---
 
-
+## Diagrama de flujo: 
+![alt text](<images/WhatsApp Image 2025-09-16 at 4.11.56 PM.jpeg>)
 
 
 
@@ -102,6 +103,9 @@ Variables intermedias:
 Constantes:
 - Wing_Chord = cuerda del ala de la aeronave ```type(float)```
 - pctg = representa la reducción porcentual del CG de acuerdo al tanque de combustible escogido (0.03 para las alas, 0.05 para el fuselaje) ```type(float)```
+
+## Diagrama de flujo:
+![alt text](<images/Diagrama de flujo ejercicio 2.drawio.png>)
 
 # **Ejercicio 3: Sistema de Alerta de Velocidad**
 
@@ -175,3 +179,6 @@ mientras i <= FLG_TIME y FLG > 0
 Mostrar "El vuelo ha finalizado. Se generaron {SPD_ALERT} alertas durante un tiempo de vuelo de {t_vuelo} minutos, en el cual se realizaron {i} iteraciones de control."
 fin
 ```
+
+## Prueba de escritorio (ejercicio 1):
+![Prueba de escritorio](<images/WhatsApp Image 2025-09-16 at 4.35.12 PM.jpeg>)
