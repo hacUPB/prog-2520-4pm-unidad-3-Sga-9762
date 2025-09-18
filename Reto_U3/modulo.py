@@ -15,7 +15,7 @@ def valuecomputer(OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG):
             return OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG
 
 
-def Ascenso(altitud_crucero:int)):
+def Ascenso(altitud_crucero:int):
     altitud_avion = 0
     altitud_cabina = 0
     paso_ascenso = 1000
@@ -29,8 +29,8 @@ def Ascenso(altitud_crucero:int)):
         if altitud_cabina > limite_seguridad_cabina:
             print("¡ALERTA! Fallo de presurizacion.\nIniciando descenso de emergencia")
             break
-    else:
-        print("Ascenso completado. El avion ha alcanzado la altitud de crucero de forma segura")
+    
+    print("Ascenso completado. El avion ha alcanzado la altitud de crucero de forma segura")
 
 
     
@@ -40,7 +40,7 @@ def CG(opt, CG):
                         CG = CG - 0.3
             elif opt == 2:
                         CG = CG + 0.5
-return CG
+            return CG
 
 def SpdAlert():
     MACH_0DG = 331
@@ -59,7 +59,7 @@ def SpdAlert():
     chc = int(input("¿Iniciar el vuelo?\n 1. SI\n 2. NO\n SU SELECCION: "))
     match chc:
         case 1:
-            while FLG_TIME > 0 and i <= FLG_TIME:
+            for i in range(0, FLG_TIME + 1):
             # valuecomputer()
                 OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG = valuecomputer(OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG)
                 print(f"**Iteracion: {i}**\n **Temperatura externa: {OAT}°C**\n **Velocidad indicada: {IAS}kts**\n **Estado de flaps: {FLAPS}**\n **Configuracion de flaps: {FLAP_CFG}**\n **Estado del tren de aterrizaje: {LDG_GEAR}**")
@@ -84,7 +84,7 @@ def SpdAlert():
                 if IAS >= MAX_IAS:
                     print(f"¡ALERTA: se ha superado la velocidad MÁXIMA de operación! ¡Reduzca la velocidad inmediatamente!\n Velocidad máxima: {MAX_IAS}kts \n Velocidad registrada: {IAS}kts")
                     SPD_ALERT += 1
-                i += 1
+                #i += 1
                 
             print(f"El vuelo ha finalizado. Se generaron {SPD_ALERT} alertas durante un tiempo de vuelo de {t_vuelo} minutos, en el cual se realizaron {i} iteraciones de control.")
         case 2:
@@ -98,25 +98,28 @@ def fuelsim():
             #initCG = 22.5
             uprLMT = 25
             lwrLMT = 20
-            chgWING = -0.3
-            chgCTR = 0.5
-            flt = int(input("Ingrese la duración del vuelo (horas)"))
+            #chgWING = -0.3
+            #chgCTR = 0.5
+            flt = int(input("Ingrese la duración del vuelo (horas): "))
             currentCG = 22.5
             i = 0
             while i <= flt and flt < 20 and flt > 0:
-                        print(f"CG actual: {currentCG}\n Iteración actual: {i}")
+                        print(f"Iteración actual: {i}")
                         opcion_tanque = 0
-                        opcion_tanque = int(input("Seleccione la sección de tanques de combustible a consumir:\n 1. ALAS\n 2. FUSELAJE CENTRAL\n SU SELECCION: ")
+                        opcion_tanque = int(input(f"Seleccione la sección de tanques de combustible a consumir:\n 1. ALAS\n 2. FUSELAJE CENTRAL\n **¡IMPORTANTE! RANGO DE CG SEGURO: entre 20% y 25%\n CG actual: {currentCG}\n SU SELECCION: "))
                         if opcion_tanque == 1:
                                     currentCG = CG(opcion_tanque, currentCG)
-                        elif: opcion_tanque == 2:
+                        elif opcion_tanque == 2:
                                     currentCG = CG(opcion_tanque, currentCG)
                         if uprLMT < currentCG :
                                     print("¡ALERTA! ESTABILIDAD CRITICA. MODIFIQUE EL CENTRO DE GRAVEDAD INMEDIATAMENTE")
                         i += 1
-            if lwrLMT < currentCG < uprLMT:
-                        print(f"¡Aterrizaje seguro! CG actual: {currentCG}"})
-            else:
-                        print(f"¡ATERRIZAJE PELIGROSO! CG actual: {currentCG}"})
+            if lwrLMT < currentCG < uprLMT and flt < 20 and flt > 0:
+                        print(f"¡Aterrizaje seguro! CG actual: {currentCG}")
+            elif currentCG < lwrLMT or currentCG > uprLMT:
+                        print(f"¡ATERRIZAJE PELIGROSO! CG actual: {currentCG}")
+            if flt > 20 or flt < 0:
+                   print("El tiempo de vuelo ingresado no es válido.")
+            return currentCG
                                     
                         

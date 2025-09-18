@@ -1,5 +1,8 @@
 ### [```Para visualizar el código de cada ejercicio, click aquí```](RetoUnidad3.py)
 
+## **Declaración de uso de Inteligencia Artificial:**
+> Se utilizaron herramientas de inteligencia artificial con el fin de elaborar **algunos** de los enunciados y tablas de variables del reto. La elaboración de los códigos ha sido realizada en su totalidad por humanos, así como los diagramas de flujo y pseudocódigos presentados.
+
 # **Ejercicio 1: Simulador de Ascenso y Control de Presurización**
 
 **Contexto Aeronáutico:**
@@ -51,58 +54,54 @@ Tu objetivo es desarrollar un programa que simule el ascenso de un avión desde 
 
 
 
-# **Ejercicio 2: Simulador de Gestión del Centro de Gravedad (CG)**
+# Ejercicio 2: Simulador de Gestión del Centro de Gravedad (CG)
 
-**Contexto Aeronáutico:**
+*Contexto Aeronáutico:*
 El Centro de Gravedad (CG) es el punto de equilibrio de un avión y es crítico para su estabilidad. Durante un vuelo, el CG se desplaza a medida que se consume el combustible de los diferentes tanques. Si el CG se mueve fuera de los límites permitidos (demasiado adelante o demasiado atrás), el avión puede volverse inestable y peligroso de volar.
 
-**Descripción del Problema:**
-Tu tarea es crear un programa que simule un vuelo de 5 horas. Durante la simulación, el usuario (actuando como piloto) deberá tomar decisiones sobre de qué tanques de combustible consumir para mantener el Centro de Gravedad (CG) dentro de un rango seguro.
+*Descripción del Problema:*
+Tu tarea es crear un programa que simule un vuelo de duración ingresada por el usuario. Durante la simulación, el usuario (actuando como piloto) deberá tomar decisiones sobre de qué tanques de combustible consumir para mantener el Centro de Gravedad (CG) dentro de un rango seguro.
 
-**Requisitos de la Simulación:**
+*Requisitos de la Simulación:*
 
-1.  **Estado Inicial:**
-    *   La simulación representa un vuelo de **5 horas**.
-    *   El CG inicial del avión es de **22.5%**.
-    *   Los límites de seguridad para el CG son: **20.0%** y **25.0%**.
+1.  *Estado Inicial:*
+    *   La duración del vuelo (en horas) será ingresada por el usuario.
+    *   El CG inicial del avión es de *22.5%*.
+    *   Los límites de seguridad para el CG son: *20.0%* y *25.0%*.
 
-2.  **Proceso Interactivo (Bucle):**
-    *   El programa debe avanzar en un **bucle** que simule el paso del tiempo, ejecutándose una vez por cada hora de vuelo.
-    *   En cada hora, el programa debe mostrar al usuario la **hora de vuelo actual** y la **posición actual del CG**.
+2.  *Proceso Interactivo (Bucle):*
+    *   El programa debe avanzar en un *bucle* que simule el paso del tiempo, ejecutándose una vez por cada hora de vuelo, hasta completar la duración ingresada por el usuario.
+    *   En cada hora, el programa debe mostrar al usuario la *hora de vuelo actual* y la *posición actual del CG*.
 
-3.  **Toma de Decisiones (Condicionales e Interacción):**
+3.  *Toma de Decisiones (Condicionales e Interacción):*
     *   Cada hora, el programa debe preguntar al usuario de qué grupo de tanques desea consumir combustible:
-        *   **Opción 1: Tanques de las alas.** Consumir de aquí mueve el CG hacia atrás en `0.3%`.
-        *   **Opción 2: Tanque central.** Consumir de aquí mueve el CG hacia adelante en `0.5%`.
-    *   El programa debe verificar si el CG está fuera de los límites de seguridad. Si lo está, debe mostrar una **alerta de "ESTABILIDAD CRÍTICA"** antes de pedirle al usuario que tome la siguiente decisión.
+        *   *Opción 1: Tanques de las alas.* Consumir de aquí mueve el CG hacia atrás en 0.3%.
+        *   *Opción 2: Tanque central.* Consumir de aquí mueve el CG hacia adelante en 0.5%.
+    *   El programa debe verificar si el CG está fuera de los límites de seguridad. Si lo está, debe mostrar una *alerta de "ESTABILIDAD CRÍTICA"* antes de pedirle al usuario que tome la siguiente decisión.
 
-4.  **Uso de Funciones:**
-    *   Debes crear y utilizar al menos una **función propia**. Por ejemplo, una función llamada `recalcular_cg` que reciba el CG actual y la opción del usuario, y devuelva la nueva posición del CG.
+4.  *Uso de Funciones:*
+    *   Debes crear y utilizar al menos una *función propia*. Por ejemplo, una función llamada recalcular_cg que reciba el CG actual y la opción del usuario, y devuelva la nueva posición del CG.
 
-5.  **Fin de la Simulación:**
-    *   Al terminar las 5 horas de vuelo, el programa debe mostrar un mensaje final indicando si el aterrizaje fue seguro (CG dentro de los límites) o peligroso (CG fuera de los límites), mostrando la posición final del CG.
+5.  *Fin de la Simulación:*
+    *   Al terminar la duración de vuelo ingresada por el usuario, el programa debe mostrar un mensaje final indicando si el aterrizaje fue seguro (CG dentro de los límites) o peligroso (CG fuera de los límites), mostrando la posición final del CG.
 
 | TABLA DE VARIABLES (PROBLEMA 2) |
 
 Variables de entrada:
 
-- Fuel_Wings = variable booleana que indica si se consumirá combustible de los tanques de las alas; ```type(bool)```
-- Fuel_Fuselage = variable booleana que indica si se consumirá combustible de los tanques de las alas ```type(bool)```
-- CurrentCG = posición del CG actual del avión ```type(float)```
+- flt = variable tipo entero que indica el tiempo de vuelo total, es decir, la cantidad de iteraciones a realizar; ```type(int)```
+- opcion_tanque = variable entera que le indica al código el tipo de tanque que se consumirá. ```type(int)```
 
 Variables de salida:
-- CG = posición del centro de gravedad (nuevo) del avión ```type(float)```
-- NewCHAR_safe = variable booleana que determina si las nuevas características de vuelo (a partir de los datos ingresados y cálculos hechos) son seguras o no. ```type(bool)```
+- current_CG = posición del centro de gravedad (nuevo/final) del avión ```type(float)```
 
-
-Variables intermedias:
-- CG_calc = cálculo del centro de gravedad (nuevo) del avión respecto a los tanques de los que se consumirá combustible (CG-(CG*pctg)) ```type(float)```
-- MAC = porcentaje en el cual debe ubicarse el CG respecto a la cuerda del ala (utilizado para verificación de seguridad) (Wing_Chord*0.3) ```type(float)```
-
+Variables de control:
+- i = variable de control que representa la cantidad de iteraciones a realizar.
 
 Constantes:
-- Wing_Chord = cuerda del ala de la aeronave ```type(float)```
-- pctg = representa la reducción porcentual del CG de acuerdo al tanque de combustible escogido (0.03 para las alas, 0.05 para el fuselaje) ```type(float)```
+- uprLMT = variable que determina el extremo superior del límite de seguridad del CG ```type(int)```
+- uprLMT = variable que determina el extremo inferior del límite de seguridad del CG ```type(int)```
+
 
 ## Diagrama de flujo:
 ![alt text](<images/Diagrama de flujo ejercicio 2.drawio.png>)
@@ -119,6 +118,7 @@ Variables de entrada:
 - OAT = temperatura atmosférica ```type(float)```
 - FLAPS = variable booleana que determina el estado de los flaps (true = desplegados / false = retraidos) ```type(bool)```
 - LDG_GEAR = variable booleana que determina el estado del tren de aterrizaje (true = desplegado / false = retraido) ```type(bool)```
+- chc = variable que le indica al código si el usuario ha decidido iniciar el vuelo. ```type(int)```
 
 Variables intermedias:
 - MACH = velocidad del sonido (en base a la altitud) = EC_MACH```type(float)```
@@ -182,3 +182,5 @@ fin
 
 ## Prueba de escritorio (ejercicio 1):
 ![Prueba de escritorio](<images/WhatsApp Image 2025-09-16 at 4.35.12 PM.jpeg>)
+
+
