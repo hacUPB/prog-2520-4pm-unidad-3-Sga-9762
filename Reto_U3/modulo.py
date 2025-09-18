@@ -14,12 +14,33 @@ def valuecomputer(OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG):
             FLAP_CFG = random.randrange(0,5)
             return OAT, IAS, FLAPS, LDG_GEAR, FLAP_CFG
 
-def Ascenso():
-    pass
+
+def Ascenso(altitud_crucero:int)):
+    altitud_avion = 0
+    altitud_cabina = 0
+    paso_ascenso = 1000
+    limite_seguridad_cabina = 8000
+    tasa_aumento_cabina = 250
+
+    while altitud_avion < altitud_crucero:
+        altitud_avion = altitud_avion + paso_ascenso
+        altitud_cabina = altitud_cabina + tasa_aumento_cabina
+        print(f"La altitud actual del avion es de {altitud_avion} y la altitud de cabina es {altitud_cabina}")
+        if altitud_cabina > limite_seguridad_cabina:
+            print("¡ALERTA! Fallo de presurizacion.\nIniciando descenso de emergencia")
+            break
+    else:
+        print("Ascenso completado. El avion ha alcanzado la altitud de crucero de forma segura")
+
+
     
 
-def CG():
-    pass
+def CG(opt, CG):
+            if opt == 1:
+                        CG = CG - 0.3
+            elif opt == 2:
+                        CG = CG + 0.5
+return CG
 
 def SpdAlert():
     MACH_0DG = 331
@@ -72,3 +93,30 @@ def SpdAlert():
               print("El valor ingresado no es válido")
               chc = int(input("¿Iniciar el vuelo?\n 1. SI\n 2. NO\n SU SELECCION: "))
     return SPD_ALERT
+
+def fuelsim():
+            #initCG = 22.5
+            uprLMT = 25
+            lwrLMT = 20
+            chgWING = -0.3
+            chgCTR = 0.5
+            flt = int(input("Ingrese la duración del vuelo (horas)"))
+            currentCG = 22.5
+            i = 0
+            while i <= flt and flt < 20 and flt > 0:
+                        print(f"CG actual: {currentCG}\n Iteración actual: {i}")
+                        opcion_tanque = 0
+                        opcion_tanque = int(input("Seleccione la sección de tanques de combustible a consumir:\n 1. ALAS\n 2. FUSELAJE CENTRAL\n SU SELECCION: ")
+                        if opcion_tanque == 1:
+                                    currentCG = CG(opcion_tanque, currentCG)
+                        elif: opcion_tanque == 2:
+                                    currentCG = CG(opcion_tanque, currentCG)
+                        if uprLMT < currentCG :
+                                    print("¡ALERTA! ESTABILIDAD CRITICA. MODIFIQUE EL CENTRO DE GRAVEDAD INMEDIATAMENTE")
+                        i += 1
+            if lwrLMT < currentCG < uprLMT:
+                        print(f"¡Aterrizaje seguro! CG actual: {currentCG}"})
+            else:
+                        print(f"¡ATERRIZAJE PELIGROSO! CG actual: {currentCG}"})
+                                    
+                        
